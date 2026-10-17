@@ -56,7 +56,7 @@ always matches what is on disk. The workflow is:
 
 1. **Open** — the buffer keeps the `\uXXXX` escapes. Inlay hints show the decoded text at the end of each line;
    hover shows it for the line under the cursor.
-2. **Decode to edit** — open the code actions menu (`ctrl-.` / `cmd-.`) and run `Decode \uXXXX escapes (for editing)`.
+2. **Decode to edit** — open the code actions menu (`ctrl-.` / `cmd-.`, or `alt-enter` with the JetBrains base keymap) and run `Decode \uXXXX escapes (for editing)`.
    The buffer now shows native text, and a warning diagnostic marks it as not yet escaped.
    (You can also type native text directly without decoding first.)
 3. **Save** — `format_on_save` escapes every non-ASCII character to `\uXXXX` right before the file is written.
