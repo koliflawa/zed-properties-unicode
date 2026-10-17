@@ -1,0 +1,12 @@
+id = "properties-unicode-escape"
+name = "Properties Unicode Escapes"
+version = "0.1.0"
+schema_version = 1
+authors = ["koliflawa"]
+description = "Read and edit \\uXXXX escapes in Java .properties files as native text (inlay hints, hover), and escape them back on save."
+repository = "https://github.com/koliflawa/zed-properties-unicode"
+
+# The Properties language (grammar) comes from the Java extension — this extension only adds a language server.
+[language_servers.properties-unicode]
+name = "properties-unicode"
+languages = ["Properties"]
