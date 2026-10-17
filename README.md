@@ -29,7 +29,9 @@ alone, and escaping writes upper-case hex — so decode → escape reproduces th
 ## Requirements
 
 - The **Java** extension, which provides the `Properties` language (grammar) this extension attaches to.
-- No other dependencies — the server runs on the Node.js bundled with Zed.
+- No other dependencies. On first use the extension downloads the server — a single dependency-free script,
+  `properties-unicode-lsp.mjs` — from this repository's [GitHub releases](https://github.com/koliflawa/zed-properties-unicode/releases)
+  and runs it with the Node.js bundled with Zed. Without network access it keeps using the last downloaded version.
 
 ## Settings
 
@@ -72,7 +74,19 @@ pollute undo history on every save.
 ## Development
 
 Install Rust via [rustup](https://rustup.rs), then in Zed run `zed: install dev extension` and pick this folder.
-After editing `server/properties-unicode-lsp.mjs`, run `zed: rebuild dev extension`.
+
+To run a local copy of the server instead of the released one, point the language server at it:
+
+```jsonc
+"lsp": {
+  "properties-unicode": {
+    "binary": { "path": "node", "arguments": ["/path/to/server/properties-unicode-lsp.mjs", "--stdio"] }
+  }
+}
+```
+
+Releases are published by pushing a `vX.Y.Z` tag; the workflow checks that `extension.toml`, `Cargo.toml` and the
+server report the same version and attaches the script to the release.
 
 ## License
 
